@@ -1,0 +1,23 @@
+name: Learn CI/CD
+
+on:
+  workflow_dispatch:
+
+jobs:
+  example-job:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Inline Bash script
+        run: echo "Hello from an inline bash script in a GitHub Action Workflow!"
+
+      - name: Inline Python script
+        run: print("Hello from an inline python script in a GitHub Action Workflow!")
+        shell: python
+
+      - name: Use a marketplace action
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: "from an action in the GitHub Action marketplace! 😊"
