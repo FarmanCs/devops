@@ -3,5 +3,5 @@ node_modules/
 .env.local
 .ssh/github_actions_key
 .ssh/github_actions_key.pub
-.ssh/*.pem
+.ssh/
 .DS_Store
