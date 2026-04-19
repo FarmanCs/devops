@@ -1,4 +1,7 @@
-node_modules
+node_modules/
 .env
-github_actions_key
-github_actions_key.pub
+.env.local
+.ssh/github_actions_key
+.ssh/github_actions_key.pub
+.ssh/*.pem
+.DS_Store
