@@ -1,23 +1,20 @@
 name: Learn CI/CD
+description: A GitHub Action for learning CI/CD
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-on:
-  workflow_dispatch:
+    - name: Inline Bash script
+      shell: bash
+      run: echo "Hello from an inline bash script in a GitHub Action!"
 
-jobs:
-  example-job:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Inline Python script
+      shell: python
+      run: print("Hello from an inline python script in a GitHub Action!")
 
-      - name: Inline Bash script
-        run: echo "Hello from an inline bash script in a GitHub Action Workflow!"
-
-      - name: Inline Python script
-        run: print("Hello from an inline python script in a GitHub Action Workflow!")
-        shell: python
-
-      - name: Use a marketplace action
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: "from an action in the GitHub Action marketplace! 😊"
+    - name: Use a marketplace action
+      uses: actions/hello-world-javascript-action@v1
+      with:
+        who-to-greet: "from an action in the GitHub Action marketplace! 😊"
