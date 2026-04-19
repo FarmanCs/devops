@@ -1,0 +1,22 @@
+name: Deploy to AWS EC2
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy Via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }} # Public IP of EC2
+          username: ubuntu # not root
+          key: ${{ secrets.SSH_SECRET_KEY }} # Your private key
+          script: |
+            cd ~/devops
+            git pull origin master
+            docker compose up -d --build
